@@ -23,18 +23,36 @@ class AccueilController {
     }
 
     #[Route(path: '/accueil/{nbr1}/{operateur}/{nbr2}', name:'app_accueil_calculatrice')]
-    public function calculatrice(int $nbr1, string $operateur, int $nbr2): Response {
-        $resultat = "<p>Erreur : opérateur incorrect</p>";
+    public function calculatrice(mixed $nbr1, string $operateur, mixed $nbr2): Response {
 
-        if ($operateur == "add"){
-            $resultat = ("<p>L’addition de " . $nbr1 . " et " . $nbr2 . " est égale au résultat : " . ($nbr1 + $nbr2) . "</p>");
-        } elseif ($operateur == "sous") {
-            $resultat = ("<p>La soustraction de " . $nbr1 . " et " . $nbr2 . " est égale au résultat : " . ($nbr1 - $nbr2) . "</p>");
-        } elseif ($operateur == "multi") {
-            $resultat = ("<p>La multiplication de " . $nbr1 . " par " . $nbr2 . " est égale au résultat : " . ($nbr1 * $nbr2) . "</p>");
-        } elseif ($operateur == "div") {
-            $resultat = ("<p>La division de " . $nbr1 . " par " . $nbr2 . " est égale au résultat : " . ($nbr1 / $nbr2) . "</p>");
+        $resultat = "";
+
+        switch ($operateur) {
+            case "add":
+                $resultat = "<p>L’addition de " . $nbr1 . " et " . $nbr2 . " est égale à : " . ($nbr1 + $nbr2) . "</p>";
+                break;
+
+            case "sous":
+                $resultat = "<p>La soustraction de " . $nbr1 . " et " . $nbr2 . " est égale à : " . ($nbr1 - $nbr2) . "</p>";
+                break;
+    
+            case "multi":
+                $resultat = "<p>La multiplication de " . $nbr1 . " par " . $nbr2 . " est égale à : " . ($nbr1 * $nbr2) . "</p>";
+                break;
+    
+            case "div":
+                if ($nbr1 == 0 || $nbr2 == 0) {
+                    $resultat = "<p>Erreur : Division par zéro impossible.</p>";
+                } else {
+                    $resultat = "<p>La division de " . $nbr1 . " par " . $nbr2 . " est égale à : " . ($nbr1 / $nbr2) . "</p>";
+                }
+                break;
+    
+            default:
+                $resultat = "<p>Erreur : opérateur incorrect.</p>";
+                break;
         }
+
         return new Response($resultat);
     }
 }
