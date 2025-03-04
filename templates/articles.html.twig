@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+
+{% block body %}
+        <div class="bg-gray-100 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {% for i in 1..9 %}
+            <a href="{{ path('app_articlecontroller_articleid', {'id': i}) }}">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="px-6 py-4">
+                    <h2 class="text-xl font-semibold text-gray-800">Titre{{ i }}</h2>
+                    <p class="text-gray-600 mt-2">Description : </p>
+                </div>
+                <div class="px-6 py-4 bg-gray-100 border-t">
+                    <p class="text-sm text-gray-500">Auteur : </p>
+                    <p class="text-sm text-gray-500">Date : 02/02/2025</p>
+                </div>
+            </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

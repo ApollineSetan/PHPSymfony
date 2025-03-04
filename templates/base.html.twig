@@ -4,14 +4,47 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
-
-        {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
     </head>
     <body>
+<nav class="bg-gray-800">
+  <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between">
+      <div class="flex-shrink-0">
+        <a href="{{ path('app_homecontroller_index')}}" class="text-white text-xl font-semibold">NomDuSite</a>
+      </div>
+
+      <!-- Menu pour grand écran -->
+      <div class="hidden sm:block sm:ml-6">
+        <div class="flex space-x-4">
+          <a href="{{ path('app_homecontroller_index')}}" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+          <a href="{{ path('app_articlecontroller_allarticles')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Liste articles</a>
+          <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Ajouter article</a>
+          <a href="{{ path('app_usercontroller_register')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Inscription</a>
+          <a href="{{ path('app_usercontroller_login')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Connexion</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+
+        <!-- Main Content -->
         {% block body %}{% endblock %}
+
+<footer class="bg-gray-800 py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col items-center space-y-4">
+            <div class="flex space-x-16 text-center">
+                <a href="#" class="text-gray-300 hover:text-white text-sm font-medium">Conditions Générales</a>
+                <a href="#" class="text-gray-300 hover:text-white text-sm font-medium">Réseaux Sociaux</a>
+                <a href="#" class="text-gray-300 hover:text-white text-sm font-medium">Contact</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
     </body>
 </html>
