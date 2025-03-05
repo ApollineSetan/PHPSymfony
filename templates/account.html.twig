@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accounts{% endblock %}
+
+{% block body %}
+<div class="bg-gray-100 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 space-y-8">
+            {% for account in accounts %}
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden my-6" id="account-{{ account.id }}">
+                    <div class="px-6 py-8">
+                        <h2 class="text-xl font-bold text-gray-800">{{ account.firstname }} {{ account.lastname }}</h2>
+                        <p class="mt-4 text-gray-600">{{ account.email }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
