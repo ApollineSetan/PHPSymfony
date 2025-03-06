@@ -8,7 +8,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {% for article in articles %}
-            <a href="{{ path('app_articlecontroller_showallarticle', {'id': article.id}) }}">
+            <a href="{{ path('app_articlecontroller_showarticle', {'id': article.id}) }}">
             <div class="bg-white rounded-lg shadow-lg overflow-hidden" id="article-{{ article.id }}">
                 <div class="px-6 py-4">
                     <h2 class="text-xl font-semibold text-gray-800">{{ article.title }}</h2>

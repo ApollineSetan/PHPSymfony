@@ -1,20 +1,27 @@
+{# templates/article_detail.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %}Détail{% endblock %}
+{% block title %}{{ article.title }}{% endblock %}
 
 {% block body %}
 <div class="bg-gray-100 py-12">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
             <div class="px-6 py-8">
-                <h1 class="text-3xl font-bold text-gray-800">Titre {{ id }}</h1>
+                <h1 class="text-3xl font-bold text-gray-800">{{ article.title }}</h1>
                 <p class="mt-4 text-gray-600">
-                    Ceci est la description détaillée de l'article : {{ id }}.
+                    {{ article.content }}
                 </p>
             </div>
             <div class="px-6 py-4 bg-gray-100 border-t">
-                <p class="text-sm text-gray-500">Auteur : </p>
-                <p class="text-sm text-gray-500">Date : 02/02/2025</p>
+                <p class="text-sm text-gray-500">Auteur : {{ article.author.firstname }} {{ article.author.lastname }}</p>
+                <p class="text-sm text-gray-500">Date : {{ article.createAt|date('Y-m-d') }}</p>
+                <p class="text-sm text-gray-500">
+                    Catégories :
+                    {% for category in article.categories %}
+                        {{ category.name }}{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </p>
             </div>
         </div>
     </div>
