@@ -37,6 +37,7 @@ class Article
      * @var Collection<int, Category>
      */
     #[ORM\ManyToMany(targetEntity: Category::class)]
+    #[Groups(['article:read'])]
     private Collection $categories;
 
     public function __construct()

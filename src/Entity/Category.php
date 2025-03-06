@@ -12,11 +12,10 @@ class Category
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['category:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    #[Groups(['category:read'])]
+    #[Groups(['category:read', 'article:read'])]
     private ?string $name = null;
 
     public function getId(): ?int
