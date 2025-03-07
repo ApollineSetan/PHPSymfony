@@ -1,0 +1,18 @@
+meta {
+  name: updateAccount
+  type: http
+  seq: 4
+}
+
+patch {
+  url: https://127.0.0.1:8000/api/account/{email}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "firstName": "NouveauPrénom",
+    "lastName": "NouveauNom"
+  }
+}

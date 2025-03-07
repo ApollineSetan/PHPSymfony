@@ -15,7 +15,14 @@
                     <p class="text-gray-600 mt-2">{{ article.content|slice(0, 100) ~ '...' }}</p>
                 </div>
                 <div class="px-6 py-4 bg-gray-100 border-t">
-                    <p class="text-sm text-gray-500">Auteur : {{ article.author.firstname }} {{ article.author.lastname }}</p>
+                    <p class="text-sm text-gray-500">
+                        Auteur : 
+                        {% if article.author %}
+                            {{ article.author.firstname }} {{ article.author.lastname }}
+                        {% else %}
+                            Auteur inconnu
+                        {% endif %}
+                    </p>
                     <p class="text-sm text-gray-500">Date : {{ article.createAt|date('Y-m-d') }}</p>
                     <p class="text-sm text-gray-500">
                         Catégories : 

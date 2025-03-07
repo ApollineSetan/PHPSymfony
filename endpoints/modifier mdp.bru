@@ -1,0 +1,17 @@
+meta {
+  name: updatePassword
+  type: http
+  seq: 5
+}
+
+patch {
+  url: https://127.0.0.1:8000/api/account/{email}/password
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "password": "nouveauMotDePasse123"
+  }
+}

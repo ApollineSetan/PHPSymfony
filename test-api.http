@@ -1,0 +1,10 @@
+POST https://127.0.0.1:8000/api/account
+Content-Type: application/json
+
+{
+    "firstname": "John",
+    "lastname": "Doe",
+    "email": "john.doe@example.com",
+    "password": "password123",
+    "roles": "ROLE_USER"
+}
