@@ -9,8 +9,12 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use App\Controller\Admin\AccountCrudController;
+use App\Entity\Article;
+use App\Entity\Category;
+use App\Entity\Account;
 
-#[AdminDashboard(routePath: '/admin', routeName: 'admin')]
+#[AdminDashboard(routePath: '/admenigma', routeName: 'admin')]
 class DashboardController extends AbstractDashboardController
 {
 
@@ -21,7 +25,6 @@ class DashboardController extends AbstractDashboardController
         $this->adminUrlGenerator = $adminUrlGenerator;
     }
 
-    #[Route('/account', name:'admin_cat')]
     public function index(): Response
     {
          $url = $this->adminUrlGenerator
@@ -53,12 +56,21 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('PHPSymfony');
+            ->setTitle('Dashboard');
     }
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+    
+        // Lien vers le CRUD de Account
+        yield MenuItem::linkToCrud('Accounts', 'fas fa-user', Account::class);
+        
+        // Lien vers le CRUD de Article
+        yield MenuItem::linkToCrud('Articles', 'fas fa-newspaper', Article::class);
+        
+        // Lien vers le CRUD de Category
+        yield MenuItem::linkToCrud('Categories', 'fas fa-list', Category::class);
+
     }
 }
