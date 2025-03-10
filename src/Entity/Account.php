@@ -23,7 +23,7 @@ class Account
     #[Groups(['account:read', 'article:read', 'article:readbyid', 'account:create'])]
     private ?string $lastname = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, unique:true)]
     #[Groups(['account:read', 'account:create'])]
     private ?string $email = null;
 

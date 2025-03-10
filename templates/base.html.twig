@@ -19,9 +19,12 @@
         <div class="flex space-x-4">
           <a href="{{ path('app_homecontroller_index')}}" class="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
           <a href="{{ path('app_articlecontroller_showallarticle')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Liste articles</a>
-          <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Ajouter article</a>
-          <a href="{{ path('app_usercontroller_register')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Inscription</a>
+          <a href="{{path('app_articlecontroller_add')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Ajouter article</a>
+          <a href="{{ path('app_category')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Catégories</a>
+          <a href="{{ path('app_category_add')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Ajouter une catégorie</a>
+          <a href="{{ path('app_accountcontroller_add')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Inscription</a>
           <a href="{{ path('app_usercontroller_login')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Connexion</a>
+          <a href="{{ path('app_accountcontroller_showallaccount')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Comptes</a>
         </div>
       </div>
     </div>

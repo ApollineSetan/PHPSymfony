@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une catégorie{% endblock %}
+
+{% block body %}
+    <div class="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg ml-50">
+        <h1 class="mt-10 text-center text-2xl font-bold tracking-tight text-gray-900">Ajouter une catégorie</h1>
+
+        <turbo-frame id="id_category">
+            {{ form_start(form) }}
+            
+            <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+                {{ form_label(form.name, null, {'label_class': 'block text-sm font-medium text-gray-700'}) }}
+                {{ form_widget(form.name, {
+                    'attr': {'class': 'mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm'}
+                }) }}
+                {{ form_errors(form.name, { 'attr': { 'class': 'text-sm text-red-600 mt-1' } }) }}
+            </div>
+
+            <div class="flex justify-center mt-6">
+                {{ form_widget(form.save, {
+                    'attr': { 'class': 'inline-flex items-center px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' }
+                }) }}
+            </div>
+
+            {{ form_end(form) }}
+            {% include '_toast.html.twig' %}
+        </turbo-frame>
+    </div>
+{% endblock %}

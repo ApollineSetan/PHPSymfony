@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <turbo-frame id="id_account">
+        <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+            <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+              <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
+              <h2 class="mt-10 text-center text-2xl font-bold tracking-tight text-gray-900">S'inscrire</h2>
+            </div>
+          
+            <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <form method="post" action="{{ path('app_accountcontroller_add') }}" class="space-y-6">
+      {{ form_start(form, { 'attr': { 'class': 'space-y-6' } }) }}
+
+      <div>
+        <label for="firstname" class="block text-sm font-medium text-gray-900">Saisir un prénom</label>
+        <div class="mt-2">
+          {{ form_widget(form.firstname, {
+            'attr': { 'class': 'block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm' }
+          }) }}
+        </div>
+        {{ form_errors(form.firstname) }}
+      </div>
+
+      <div>
+        <label for="lastname" class="block text-sm font-medium text-gray-900">Saisir un nom</label>
+        <div class="mt-2">
+          {{ form_widget(form.lastname, {
+            'attr': { 'class': 'block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm' }
+          }) }}
+        </div>
+        {{ form_errors(form.lastname) }}
+      </div>
+
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-900">Saisir une adresse email</label>
+        <div class="mt-2">
+          {{ form_widget(form.email, {
+            'attr': { 'class': 'block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm' }
+          }) }}
+        </div>
+        {{ form_errors(form.email) }}
+      </div>
+
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-900">Saisir un mot de passe</label>
+        <div class="mt-2">
+          {{ form_widget(form.password, {
+            'attr': { 'class': 'block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm' }
+          }) }}
+        </div>
+        {{ form_errors(form.password) }}
+      </div>
+
+      <div>
+        <label for="roles" class="block text-sm font-medium text-gray-900">Rôle</label>
+        <div class="mt-2">
+          {{ form_widget(form.roles, {
+            'attr': { 'class': 'block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:outline-indigo-600 sm:text-sm' }
+          }) }}
+        </div>
+        {{ form_errors(form.roles) }}
+      </div>
+
+      <div class="flex justify-center">
+        {{ form_widget(form.save, {
+            'attr': { 'class': 'inline-flex items-center px-6 py-2 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' }
+        }) }}
+      </div>
+
+    <p class="mt-10 text-center text-sm text-gray-500">
+        Déjà membre ? 
+        <a href="{{path('app_usercontroller_login')}}" class="font-semibold text-indigo-600 hover:text-indigo-500">Se connecter</a>
+    </p>
+
+      {{ form_end(form) }}
+      {% include '_toast.html.twig' %}
+    </form>
+    </div>
+</div>
+</turbo-frame>
+{% endblock %}
