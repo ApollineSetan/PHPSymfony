@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Service\TestService;
+use Error;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,6 +17,13 @@ class TestController extends AbstractController
         $city = $request->query->get('city', 'Toulouse');  // Valeur par défaut si aucune ville n'est renseignée
 
         $weatherData = $testService->getWeatherByCity($city);
+
+        if(isset($weatherData['error'])){
+            return $this->render('weather.html.twig', [
+                'city' => $city,
+                'error' => $weatherData['error']
+            ]);
+        }
 
         $temperature = $weatherData['main']['temp'];
         $temperatureCelsius = $temperature;
