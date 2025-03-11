@@ -71,14 +71,15 @@ class AccountController extends AbstractController
     #[Route('/account/{id}', name: 'app_accountcontroller_showaccount', requirements: ['id' => '\d+'])]
     public function showAccountDetail(int $id): Response
     {
-        $account = $this->accountService->getById($id);
-
-        if (!$account) {
-            throw $this->createNotFoundException('Compte non trouvé');
+        try {
+            $account = $this->accountService->getbyId($id);
+        } catch (\Exception $e) {
+            $erreur = $e->getMessage();
         }
 
         return $this->render('account_detail.html.twig', [
-            'account' => $account
+            'account' => $account ?? null,
+            'erreur' => $erreur ?? null,
         ]);
     }
 }
