@@ -2,7 +2,7 @@
 # Files in the packages/ subdirectory configure your dependencies.
 
 parameters:
-  allowed_origin: "*"
+  weather_api_key: '%env(WEATHER_API_KEY)%'
 
 services:
   _defaults:
@@ -15,6 +15,10 @@ services:
     resource: "../src/"
     exclude:
       - "../src/DependencyInjection/"
+
+  
+  App\Service\TestService:
+    arguments: ['%env(WEATHER_API_KEY)%']
       # Kernel can be kept excluded
 
   # Add more service definitions when explicit configuration is needed
