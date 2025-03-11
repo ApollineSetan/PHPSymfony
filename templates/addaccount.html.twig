@@ -3,7 +3,6 @@
 {% block title %}Inscription{% endblock %}
 
 {% block body %}
-    <turbo-frame id="id_account">
         <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
             <div class="sm:mx-auto sm:w-full sm:max-w-sm">
               <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
@@ -75,10 +74,10 @@
         <a href="{{path('app_usercontroller_login')}}" class="font-semibold text-indigo-600 hover:text-indigo-500">Se connecter</a>
     </p>
 
+    {{form_rest(form)}}
       {{ form_end(form) }}
-      {% include '_toast.html.twig' %}
     </form>
     </div>
 </div>
-</turbo-frame>
+{% include '_toast.html.twig' %}
 {% endblock %}

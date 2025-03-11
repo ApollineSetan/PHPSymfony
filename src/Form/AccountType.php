@@ -16,39 +16,39 @@ class AccountType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('firstname', TextType::class, [
-            'label' => 'Prénom',
-            'attr' => [
-                'placeholder' => 'Saisir le prénom'
-            ]
-        ])
-        ->add('lastname', TextType::class, [
-            'label' => 'Nom',
-            'attr' => [
-                'placeholder' => 'Saisir le nom'
-            ]
-        ])
-        ->add('email', EmailType::class, [
-            'label' => 'Email',
-            'attr' => [
-                'placeholder' => 'Saisir l\'email'
-            ]
-        ])
-        ->add('password', PasswordType::class, [
-            'label' => 'Mot de passe',
-            'attr' => [
-                'placeholder' => 'Saisir le mot de passe'
-            ]
-        ])
-        ->add('roles', TextType::class, [
-            'label' => 'Rôle',
-            'attr' => [
-                'placeholder' => 'Saisir le rôle'
-            ]
-        ])
-        ->add('save', SubmitType::class, [
-            'label' => 'Ajouter le compte',
-        ]);
+            ->add('firstname', TextType::class, [
+                'label' => 'Prénom',
+                'attr' => [
+                    'placeholder' => 'Saisir le prénom'
+                ]
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'Nom',
+                'attr' => [
+                    'placeholder' => 'Saisir le nom'
+                ]
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'Email',
+                'attr' => [
+                    'placeholder' => 'Saisir l\'email'
+                ]
+            ])
+            ->add('password', PasswordType::class, [
+                'label' => 'Mot de passe',
+                'attr' => [
+                    'placeholder' => 'Saisir le mot de passe'
+                ]
+            ])
+            ->add('roles', TextType::class, [
+                'label' => 'Rôle',
+                'attr' => [
+                    'placeholder' => 'Saisir le rôle'
+                ]
+            ])
+            ->add('save', SubmitType::class, [
+                'label' => 'Ajouter le compte',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

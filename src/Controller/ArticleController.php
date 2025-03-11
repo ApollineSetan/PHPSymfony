@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Controller;
 
@@ -27,9 +27,15 @@ class ArticleController extends AbstractController
         ]);
     }
 
-    #[Route('/article/{id}', name: 'app_articlecontroller_showarticle')]
-    public function showArticle(Article $article): Response
+    #[Route('/article/{id}', name: 'app_articlecontroller_showarticle', requirements: ['id' => '\d+'])]
+    public function showArticle(int $id): Response
     {
+        $article = $this->articleRepository->find($id);
+
+        if (!$article) {
+            throw $this->createNotFoundException('Article non trouvé');
+        }
+
         return $this->render('article_detail.html.twig', [
             'article' => $article,
         ]);

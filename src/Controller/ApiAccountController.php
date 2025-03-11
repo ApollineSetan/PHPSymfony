@@ -10,7 +10,7 @@ use App\Entity\Account;
 use App\Repository\AccountRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Component\Security\Core\Password\PasswordHasherInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class ApiAccountController extends AbstractController
 {
@@ -33,7 +33,7 @@ class ApiAccountController extends AbstractController
 
     // Ajouter un compte
     #[Route('/api/account', name: 'api_account_add', methods: ['POST'])]
-    public function addAccount(Request $request): Response 
+    public function addAccount(Request $request): Response
     {
         $json = $request->getContent();
         $account = $this->serializer->deserialize($json, Account::class, 'json');
@@ -43,9 +43,7 @@ class ApiAccountController extends AbstractController
                 $this->em->persist($account);
                 $this->em->flush();
                 $code = 201;
-            }
-
-            else {
+            } else {
                 $account = "Account existe déja";
                 $code = 400;
             }
@@ -116,7 +114,7 @@ class ApiAccountController extends AbstractController
 
     // Mettre à jour le mot de passe
     #[Route('/api/account/{email}/password', name: 'api_account_update_password', methods: ['PATCH'])]
-    public function updatePassword(Request $request, string $email, PasswordHasherInterface $passwordHasher): Response
+    public function updatePassword(Request $request, string $email, UserPasswordHasherInterface $passwordHasher): Response
     {
         $account = $this->accountRepository->findOneBy(['email' => $email]);
 
@@ -147,5 +145,4 @@ class ApiAccountController extends AbstractController
             Response::HTTP_OK
         );
     }
-
 }

@@ -28,11 +28,9 @@ class ArticleCrudController extends AbstractCrudController
             TextEditorField::new('content', 'Contenu'),
             DateTimeField::new('createAt', 'Date de création'),
             AssociationField::new('author', 'Auteur')->hideOnIndex()->setCrudController(AccountCrudController::class)
-            ->autocomplete(),
+                ->autocomplete(),
             AssociationField::new('categories', 'Catégorie(s)')->hideOnIndex()->setCrudController(CategoryCrudController::class)
-            ->autocomplete()
+                ->autocomplete()
         ];
-
     }
-
 }

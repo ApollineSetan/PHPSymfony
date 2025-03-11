@@ -25,5 +25,4 @@ class AccountCrudController extends AbstractCrudController
             TextField::new('roles', 'Rôle(s)'),
         ];
     }
-
 }

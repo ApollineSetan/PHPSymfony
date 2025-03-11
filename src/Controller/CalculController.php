@@ -6,10 +6,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-class CalculController extends AbstractController {
+class CalculController extends AbstractController
+{
 
-    #[Route(path: '/calcul/{nbr1}/{operateur}/{nbr2}', name:'app_calcul_calculatrice')]
-    public function calculatrice(mixed $nbr1, string $operateur, mixed $nbr2): Response {
+    #[Route(path: '/calcul/{nbr1}/{operateur}/{nbr2}', name: 'app_calcul_calculatrice')]
+    public function calculatrice(mixed $nbr1, string $operateur, mixed $nbr2): Response
+    {
 
         if (!is_numeric($nbr1) || !is_numeric($nbr2)) {
             $resultat = "Veuillez entrer des nombres numériques.";

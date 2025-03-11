@@ -21,5 +21,4 @@ class CategoryCrudController extends AbstractCrudController
             TextField::new('name', 'Nom de la catégorie'),
         ];
     }
-
 }

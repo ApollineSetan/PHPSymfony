@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du compte - {{ account.firstname }} {{ account.lastname }}{% endblock %}
+
+{% block body %}
+<div class="bg-gray-100 py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="px-6 py-8">
+                <h1 class="text-3xl font-bold text-gray-800">{{ account.firstname }} {{ account.lastname }}</h1>
+                <p class="mt-4 text-gray-600">{{ account.email }}</p>
+            </div>
+            <div class="px-6 py-4 bg-gray-100 border-t">
+                <p class="text-sm text-gray-500">Rôle : {{ account.roles | join(', ') }}</p>
+            </div>
+        </div>
+        <div class="mt-8">
+            <br>
+            <a href="{{ path('app_accountcontroller_showallaccount') }}" class="text-indigo-600 hover:text-indigo-700 font-semibold">Retour à la liste des comptes</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -20,17 +20,16 @@ class DashboardController extends AbstractDashboardController
 
     public function __construct(
         private AdminUrlGenerator $adminUrlGenerator
-    )
-    {
+    ) {
         $this->adminUrlGenerator = $adminUrlGenerator;
     }
 
     public function index(): Response
     {
-         $url = $this->adminUrlGenerator
-         ->setController(AccountCrudController::class)
-         ->generateUrl();
-         return $this->redirect($url);
+        $url = $this->adminUrlGenerator
+            ->setController(AccountCrudController::class)
+            ->generateUrl();
+        return $this->redirect($url);
 
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //
@@ -62,15 +61,14 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-    
+
         // Lien vers le CRUD de Account
         yield MenuItem::linkToCrud('Accounts', 'fas fa-user', Account::class);
-        
+
         // Lien vers le CRUD de Article
         yield MenuItem::linkToCrud('Articles', 'fas fa-newspaper', Article::class);
-        
+
         // Lien vers le CRUD de Category
         yield MenuItem::linkToCrud('Categories', 'fas fa-list', Category::class);
-
     }
 }
